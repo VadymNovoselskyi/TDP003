@@ -10,18 +10,48 @@ body {
     height: 100vh;
 }
 
+a {
+    color: azure;
+    text-decoration: none;
+}
+
 header {
+    display: grid;
+    grid-template-columns: 1fr auto;
     background-color: #222222;
     color: azure;
-    font-size: 1.6rem;
-    font-weight: 800;
     padding: 1rem 2rem;
 }
+
+.header-title {
+    font-size: 1.6rem;
+    font-weight: 800;
+}
+
+.header-nav {
+    display: grid;
+    grid-gap: 2rem;
+    grid-auto-flow: column;
+    align-items: center;
+
+    margin-right: 4rem;
+    font-size: 1.4rem;
+}
+
 main {
     padding: 2rem 3rem;
     background: azure;
 }
+
+.image-me {
+    float: right;
+    margin: 1rem 1rem 4rem 4rem;
+}
+
 footer {
+    display: grid;
+    grid-auto-flow: column;
+    justify-items: center;
     background-color: #222222;
     color: azure;
     font-size: 1.6rem;
