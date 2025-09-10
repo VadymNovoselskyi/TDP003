@@ -1,0 +1,30 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    height: 100vh;
+}
+
+header {
+    background-color: #222222;
+    color: azure;
+    font-size: 1.6rem;
+    font-weight: 800;
+    padding: 1rem 2rem;
+}
+main {
+    padding: 2rem 3rem;
+    background: azure;
+}
+footer {
+    background-color: #222222;
+    color: azure;
+    font-size: 1.6rem;
+    font-weight: 800;
+    padding: 1rem 2rem;
+}
