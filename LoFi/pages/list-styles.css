@@ -1,3 +1,66 @@
+.filters-container {
+    margin: 1rem 0 2rem 0;
+}
+
+.search-container {
+    margin-bottom: 1rem;
+}
+
+.search-input {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid grey;
+    border-radius: 6px;
+}
+
+.controls-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.filter-select {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid grey;
+    border-radius: 6px;
+    background: #fff;
+    min-width: 12rem;
+}
+
+.sort-checkbox {
+    position: absolute;
+    opacity: 0;
+}
+
+.sort-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.9rem;
+    font-size: 0.9rem;
+    border: 1px solid grey;
+    border-radius: 6px;
+    background: #fff;
+    color: #111827;
+    cursor: pointer;
+}
+
+/* Default: ascending */
+.sort-toggle .sort-icon::after {
+    content: "↑";
+}
+.sort-toggle .sort-text::after {
+    content: "Ascending";
+}
+
+/* When checked: descending */
+.sort-checkbox:checked + .sort-toggle .sort-icon::after {
+    content: "↓";
+}
+.sort-checkbox:checked + .sort-toggle .sort-text::after {
+    content: "Descending";
+}
+
 .project-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -10,7 +73,9 @@
     display: grid;
     grid-template-columns: auto 1fr;
     grid-template-rows: auto 1fr;
-    border: 2px #000000 solid;
+    border: 1px #000000 solid;
+
+    color: #222222;
 }
 
 .project-img {

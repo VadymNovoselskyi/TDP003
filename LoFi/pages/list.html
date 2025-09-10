@@ -11,29 +11,52 @@
         <header>
             <a class="header-title" href="../index.html">TDP003</a>
             <nav class="header-nav">
-                <a href="./list.html">List</a>
+                <a href="./list.html" class="active">List</a>
                 <a href="./techniques.html">Techniques</a>
             </nav>
         </header>
 
         <main>
             <h1>Projects:</h1>
+            <div class="filters-container">
+                <div class="search-container">
+                    <input type="text" id="searchInput" class="search-input" placeholder="Search projects, courses, or technologies...">
+                </div>
+                <div class="controls-container">
+                    <select id="technologyFilter" class="filter-select">
+                        <option value="all">All Technologies</option>
+                    </select>
+                    <select id="sortBy" class="filter-select">
+                        <option value="name">Project Name</option>
+                        <option value="startDate">Start Date</option>
+                        <option value="courseCode">Course Code</option>
+                    </select>
+                    <input type="checkbox" id="sortOrder" class="sort-checkbox">
+                    <label for="sortOrder" class="sort-toggle">
+                        <span class="sort-icon"></span>
+                        <span class="sort-text"></span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="results-container">
+                <p id="resultsText" class="results-text">Showing 11 of 11 projects</p>
+            </div>
+
             <div class="project-grid">
-                <a href="../index.html">
-                    <div class="project">
-                        <img
-                            class="project-img"
-                            src="../testImg.png"
-                            width="200"
-                            height="200"
-                            alt="project1"
-                        />
-                        <p class="project-title">Project title 1</p>
-                        <p class="project-desc">Project short description 1</p>
-                    </div>
+                <a href="../index.html" class="project">
+                    <img
+                        class="project-img"
+                        src="../testImg.png"
+                        width="200"
+                        height="200"
+                        alt="project1"
+                    />
+                    <p class="project-title">Project title 1</p>
+                    <p class="project-desc">Project short description 1</p>
                 </a>
 
-                <div class="project">
+                <a href="../index.html" class="project">
                     <img
                         class="project-img"
                         src="../testImg.png"
@@ -43,9 +66,9 @@
                     />
                     <p class="project-title">Project title 2</p>
                     <p class="project-desc">Project short description 2</p>
-                </div>
+                </a>
 
-                <div class="project">
+                <a href="../index.html" class="project">
                     <img
                         class="project-img"
                         src="../testImg.png"
@@ -55,9 +78,9 @@
                     />
                     <p class="project-title">Project title 3</p>
                     <p class="project-desc">Project short description 3</p>
-                </div>
+                </a>
 
-                <div class="project">
+                <a href="../index.html" class="project">
                     <img
                         class="project-img"
                         src="../testImg.png"
@@ -67,9 +90,9 @@
                     />
                     <p class="project-title">Project title 4</p>
                     <p class="project-desc">Project short description 4</p>
-                </div>
+                </a>
 
-                <div class="project">
+                <a href="../index.html" class="project">
                     <img
                         class="project-img"
                         src="../testImg.png"
@@ -79,9 +102,9 @@
                     />
                     <p class="project-title">Project title 5</p>
                     <p class="project-desc">Project short description 5</p>
-                </div>
+                </a>
 
-                <div class="project">
+                <a href="../index.html" class="project">
                     <img
                         class="project-img"
                         src="../testImg.png"
@@ -91,9 +114,9 @@
                     />
                     <p class="project-title">Project title 6</p>
                     <p class="project-desc">Project short description 6</p>
-                </div>
+                </a>
 
-                <div class="project">
+                <a href="../index.html" class="project">
                     <img
                         class="project-img"
                         src="../testImg.png"
@@ -103,9 +126,9 @@
                     />
                     <p class="project-title">Project title 7</p>
                     <p class="project-desc">Project short description 7</p>
-                </div>
+                </a>
 
-                <div class="project">
+                <a href="../index.html" class="project">
                     <img
                         class="project-img"
                         src="../testImg.png"
@@ -115,9 +138,9 @@
                     />
                     <p class="project-title">Project title 8</p>
                     <p class="project-desc">Project short description 8</p>
-                </div>
+                </a>
 
-                <div class="project">
+                <a href="../index.html" class="project">
                     <img
                         class="project-img"
                         src="../testImg.png"
@@ -127,9 +150,9 @@
                     />
                     <p class="project-title">Project title 9</p>
                     <p class="project-desc">Project short description 9</p>
-                </div>
+                </a>
 
-                <div class="project">
+                <a href="../index.html" class="project">
                     <img
                         class="project-img"
                         src="../testImg.png"
@@ -139,9 +162,9 @@
                     />
                     <p class="project-title">Project title 10</p>
                     <p class="project-desc">Project short description 10</p>
-                </div>
+                </a>
 
-                <div class="project">
+                <a href="../index.html" class="project">
                     <img
                         class="project-img"
                         src="../testImg.png"
@@ -151,19 +174,7 @@
                     />
                     <p class="project-title">Project title 11</p>
                     <p class="project-desc">Project short description 11</p>
-                </div>
-
-                <div class="project">
-                    <img
-                        class="project-img"
-                        src="../testImg.png"
-                        width="200"
-                        height="200"
-                        alt="project1"
-                    />
-                    <p class="project-title">Project title 12</p>
-                    <p class="project-desc">Project short description 12</p>
-                </div>
+                </a>
             </div>
         </main>
 
@@ -175,5 +186,6 @@
             <p>Pages: 4?</p>
             <p>Vadym Novoselenskyi, Mattias Storck</p>
         </footer>
+
     </body>
 </html>
