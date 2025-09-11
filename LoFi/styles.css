@@ -55,11 +55,12 @@ main {
 
 footer {
     display: grid;
-    grid-auto-flow: column;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 2rem;
     justify-items: center;
     background-color: #222222;
     color: azure;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     font-weight: 800;
     padding: 1rem 2rem;
 }
