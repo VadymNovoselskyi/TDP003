@@ -1,0 +1,24 @@
+{% extends "base.html" %} 
+{% block title %} Techniques {% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="/static/style/techniques.css" />
+{% endblock %} 
+
+{% block main %}
+<h1>Techniques:</h1>
+<div class="technique-grid">
+    {% for technique in techniques %}
+    <div class="technique">
+        <p class="technique-title">{{ technique }}</p>
+        {% set technique_stats = techniques_stats[technique] %}
+        <p class="technique-use-count">Used in {{ technique_stats|length }} projects</p>
+
+        <ul class="technique-use-list">
+            {% for project in technique_stats %}
+            <li><a class="project-link" href="{{ url_for('project', project_id=project.id) }}">{{ project.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

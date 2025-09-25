@@ -19,7 +19,7 @@ def get_project_count(db: list[dict]) -> int:
     return len(db)
 
 
-def get_project(db: list[dict], id: str) -> dict | None:
+def get_project(db: list[dict], id: int) -> dict | None:
     if not isinstance(db, list):
         # raise Exception(f"db must be list and not {type(db)}")
         print(f"db must be list and not {type(db)}")

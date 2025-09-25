@@ -1,0 +1,68 @@
+{% extends "base.html" %} 
+{% block title %} List {% endblock %} 
+{% block extra_css %} 
+<link rel="stylesheet" href="/static/style/list.css" /> 
+{% endblock %} 
+
+{% block main %}
+<h1>Projects:</h1>
+<div class="filters-container">
+    <div class="search-container">
+        <input
+            type="text"
+            id="searchInput"
+            class="search-input"
+            placeholder="Search projects, courses, or technologies..."
+        />
+    </div>
+    <div class="controls-container">
+        <select id="technologyFilter" class="filter-select">
+            <option value="all">All Technologies</option>
+            <option value="python">Python</option>
+            <option value="js">js</option>
+            <option value="html">html</option>
+            <option value="css">css</option>
+        </select>
+        <select id="sortBy" class="filter-select">
+            <option value="name">Project Name</option>
+            <option value="startDate">Start Date</option>
+            <option value="courseCode">Course Code</option>
+        </select>
+        <input type="checkbox" id="sortOrder" class="sort-checkbox" />
+        <label for="sortOrder" class="sort-toggle">
+            <span class="sort-icon"></span>
+            <span class="sort-text"></span>
+        </label>
+    </div>
+</div>
+
+<div class="results-container">
+    <!-- TODO: handle less projects vid sorting -->
+    <p id="resultsText" class="results-text">Showing {{ project_count }} of {{ project_count }} projects</p>
+</div>
+
+<div class="project-grid">
+    {% for project in projects %}
+    
+    <a href="{{ url_for('project', project_id=project.project_id) }}" class="project">
+        <img
+            class="project-img"
+            src="/static/images/{{ project.small_image }}"
+            width="320"
+            height="180"
+            alt="{{ project.short_description }}"
+        />
+        <p class="project-title">{{ project.project_name }}</p>
+        <p class="project-desc">
+            {{ project.short_description }}
+        </p>
+        <div class="project-techniques">
+            {% for technique in project.techniques_used %}
+            <p class="technique">{{ technique }}</p>
+            {% endfor %}
+        </div>
+    </a>
+    {% endfor %}
+    
+</div>
+{% endblock %}

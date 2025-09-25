@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/static/style/base.css" />
+        <title>{% block title %}{% endblock %}</title>
+        {% block extra_css %}{% endblock %}
+    </head>
+    <body>
+        <header>
+            <a class="header-title" href="{{ url_for('list') }}">Portfolio</a>
+            <nav class="header-nav">
+                <a href="{{ url_for('list') }}">List</a>
+                <a href="{{ url_for('techniques') }}">Techniques</a>
+            </nav>
+        </header>
+
+        <main>{% block main %} {% endblock %}</main>
+
+        <footer>
+            <p>Course Code: TDP003</p>
+            <p>Change date: 11-09-2025</p>
+            <p>Pages: 4</p>
+            <p>Project: Portfolio</p>
+            <p>Vadym Novoselenskyi, Mattias Storck</p>
+            <p>Version: 1</p>
+        </footer>
+    </body>
+</html>

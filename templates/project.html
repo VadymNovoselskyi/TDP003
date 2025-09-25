@@ -1,0 +1,56 @@
+<!-- TODO: handle missing fields -->
+
+{% extends "base.html" %} 
+{% block title %} Project {% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="/static/style/project.css" />
+{% endblock %} 
+
+{% block main %}
+<a href="{{ url_for('list') }}" class="back-button">← Back to Projects</a>
+
+<div class="project-info">
+    <p class="project-title">{{ project.project_name }}</p>
+    <img
+        class="project-img"
+        src="/static/images/{{ project.big_image}}"
+        width="480"
+        height="270"
+        alt="{{ project.course_name }}"
+    />
+    <p class="project-desc">
+        {{ project.long_description}}
+    </p>
+
+    <div>
+        <p class="project-title">Techniques used:</p>
+
+        <div class="project-techniques">
+        {% for technique in project.techniques_used %}
+            <p class="technique">{{ technique }}</p>
+        {% endfor %}
+        </div>
+    </div>
+
+    <a href="{{ project.external_link }}" class="project-link">Gitlab link</a>
+</div>
+
+<div class="course-info">
+    <div>
+        <p class="project-title">Course Details</p>
+        <p class="course-code">{{ project.course_id }}</p>
+        <p class="course-name">{{ project.course_name }}</p>
+        <p class="course-points">{{ project.academic_credits }}</p>
+    </div>
+
+    <div>
+        <p class="project-title">Duration</p>
+        <p class="project-duration">{{ project.start_date}} - {{ project.end_date }}</p>
+    </div>
+
+    <div>
+        <p class="project-title">Team Size</p>
+        <p class="project-size">{{ project.group_size }}</p>
+    </div>
+</div>
+{% endblock %}

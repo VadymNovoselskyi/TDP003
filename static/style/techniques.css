@@ -31,3 +31,12 @@
 .technique-use-list {
     margin-left: 1rem;
 }
+
+.project-link {
+    color: black;
+    text-decoration: underline;
+}
+
+.project-link:hover {
+    color: gray;
+}

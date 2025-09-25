@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %} Error {% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="/static/style/error.css" />
+{% endblock %}
+
+{% block main %}
+    <h1>An error {{ code }} occured</h1>
+    <h2><b>{{ message }}</b></h2>
+{% endblock %}
