@@ -1,3 +1,29 @@
+/* Simplified design tokens */
+:root {
+    --color-text: #222222;
+    --color-link: #f0ffff;
+    --color-dark: #222222;
+    --color-light: #f0ffff;
+    --color-accent: rgba(255, 0, 0, 0.881);
+    --color-card: #0404040e;
+    --color-border: #000000;
+
+    --font-family-sans: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.4rem;
+    --font-weight-bold: 800;
+
+    --space-xs: 0.4rem;
+    --space-sm: 0.5rem;
+    --space-md: 0.8rem;
+    --space-lg: 1rem;
+    --space-xl: 1.6rem;
+    --space-xxl: 3rem;
+
+    --border-width: 1px;
+    --radius-sm: 0.4rem;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -8,54 +34,57 @@ body {
     display: grid;
     grid-template-rows: auto 1fr auto;
     height: 100vh;
+    color: var(--color-text);
+    font-family: var(--font-family-sans);
+    font-size: var(--font-size-base);
 }
 
 a {
-    color: azure;
+    color: var(--color-link);
     text-decoration: none;
 }
 
 a.active {
-    color: rgba(255, 0, 0, 0.881);
-    border-bottom: azure 2px solid;
+    color: var(--color-accent);
+    border-bottom: var(--color-link) calc(var(--border-width) * 2) solid;
 }
 
 header {
     display: grid;
     grid-template-columns: 1fr auto;
-    background-color: #222222;
-    color: azure;
-    padding: 1rem 2rem;
+    background-color: var(--color-dark);
+    color: var(--color-link);
+    padding: var(--space-lg) var(--space-xxl);
 }
 
 .header-title {
     font-size: 1.6rem;
-    font-weight: 800;
+    font-weight: var(--font-weight-bold);
 }
 
 .header-nav {
     display: grid;
-    grid-gap: 2rem;
+    grid-gap: var(--space-xl);
     grid-auto-flow: column;
     align-items: center;
 
     margin-right: 4rem;
-    font-size: 1.4rem;
+    font-size: var(--font-size-lg);
 }
 
 main {
     padding: 2rem 3rem;
-    background: azure;
+    background: var(--color-light);
 }
 
 footer {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 2rem;
+    grid-gap: var(--space-xl);
     justify-items: center;
-    background-color: #222222;
-    color: azure;
-    font-size: 1.4rem;
-    font-weight: 800;
-    padding: 1rem 2rem;
+    background-color: var(--color-dark);
+    color: var(--color-link);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    padding: var(--space-lg) var(--space-xxl);
 }

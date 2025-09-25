@@ -1,42 +1,42 @@
 .technique-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    grid-gap: 1.4rem;
-    margin-top: 1.6rem;
+    grid-gap: var(--space-xl);
+    margin-top: var(--space-xl);
 }
 
 .technique {
     display: grid;
     grid-template-rows: auto auto 1fr;
-    grid-gap: 0.4rem;
+    grid-gap: var(--space-xs);
 
-    padding: 0.8rem 1rem;
-    border: 1px #000000 solid;
-    border-radius: 0.4rem;
+    padding: var(--space-md) var(--space-lg);
+    border: var(--border-width) var(--color-border) solid;
+    border-radius: var(--radius-sm);
     
-    background-color: #0404040e;
-    color: #222222;
+    background-color: var(--color-card);
+    color: var(--color-text);
     font-size: 1.1rem;
 }
 
 .technique-title {
-    font-size: 1.4rem;
-    font-weight: 800;
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
 }
 
 .technique-use-count {
-    margin-bottom: 1rem;
+    margin-bottom: var(--space-lg);
 }
 
 .technique-use-list {
-    margin-left: 1rem;
+    margin-left: var(--space-lg);
 }
 
 .project-link {
-    color: black;
+    color: var(--color-text);
     text-decoration: underline;
 }
 
 .project-link:hover {
-    color: gray;
+    color: #808080;
 }

@@ -1,28 +1,28 @@
 .filters-container {
-    margin: 1rem 0 2rem 0;
+    margin: var(--space-lg) 0 var(--space-xl) 0;
 }
 
 .search-container {
-    margin-bottom: 1rem;
+    margin-bottom: var(--space-lg);
 }
 
 .search-input {
     width: 100%;
-    padding: 0.5rem 0.75rem;
-    border: 1px solid grey;
-    border-radius: 6px;
+    padding: var(--space-sm) var(--space-md);
+    border: var(--border-width) solid grey;
+    border-radius: var(--radius-sm);
 }
 
 .controls-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: var(--space-lg);
 }
 
 .filter-select {
-    padding: 0.5rem 0.75rem;
-    border: 1px solid grey;
-    border-radius: 6px;
+    padding: var(--space-sm) var(--space-md);
+    border: var(--border-width) solid grey;
+    border-radius: var(--radius-sm);
     background: #fff;
     min-width: 12rem;
 }
@@ -33,9 +33,9 @@
 }
 
 .sort-toggle {
-    padding: 0.5rem 0.9rem;
-    border: 1px solid grey;
-    border-radius: 6px;
+    padding: var(--space-sm) 0.9rem;
+    border: var(--border-width) solid grey;
+    border-radius: var(--radius-sm);
     background: #fff;
 }
 
@@ -58,27 +58,27 @@
 .project-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-    grid-gap: 1.4rem;
-    margin-top: 1.6rem;
+    grid-gap: var(--space-xl);
+    margin-top: var(--space-xl);
 }
 
 .project {
     display: grid;
     grid-template-rows: auto auto 1fr auto;
-    grid-gap: 0.8rem;
+    grid-gap: var(--space-md);
     justify-items: center;
 
-    padding: 0.8rem;
-    border: 1px #000000 solid;
-    border-radius: 0.4rem;
+    padding: var(--space-md);
+    border: var(--border-width) var(--color-border) solid;
+    border-radius: var(--radius-sm);
     
-    background-color: #0404040e;
-    color: #222222;
+    background-color: var(--color-card);
+    color: var(--color-text);
 }
 
 .project-title {
-    font-size: 1.4rem;
-    font-weight: 800;
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
 }
 .project-desc {
     font-size: 1.1rem;
@@ -87,15 +87,15 @@
 .project-techniques {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(4rem, 1fr));
-    grid-gap: 0.4rem;
+    grid-gap: var(--space-xs);
     justify-items: center;
     width: 100%;
 }
 
 .project-techniques > .technique {
-    padding: 0.5rem 1rem;
-    color: rgb(242, 241, 241);
+    padding: var(--space-sm) var(--space-lg);
+    color: #f2f1f1;
     background-color: #0a7b0ad3;
-    border: 1px #000000 solid;
-    border-radius: 0.4rem;
+    border: var(--border-width) var(--color-border) solid;
+    border-radius: var(--radius-sm);
 }

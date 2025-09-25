@@ -76,7 +76,7 @@ def project(project_id: int):
     """
     check_db_update()
     project = data.get_project(db, project_id)
-    if project is None or project_id == 2:
+    if project is None:
         return render_template(
             "error.html", code=404, message=f"Project not found for id: {project_id}"
         )

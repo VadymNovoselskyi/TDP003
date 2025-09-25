@@ -2,60 +2,60 @@ main {
   display: grid;
   grid-template-columns: 6fr 4fr;
   grid-template-rows: auto  auto 1fr;
-  grid-gap: 1rem 4rem;
+  grid-gap: var(--space-lg) 4rem;
 }
 
 .back-button {
   grid-column: span 2;
   grid-row: 1;
-  color: #222222;
-  margin-bottom: 1rem;
+  color: var(--color-text);
+  margin-bottom: var(--space-lg);
 }
 
 .project-info {
   grid-row: span 2;
   display: grid;
   grid-auto-flow: row;
-  grid-gap: 1rem;
+  grid-gap: var(--space-lg);
 }
 
 .project-title {
-  font-size: 1.4rem;
-  font-weight: 800;
-  margin-bottom: 0.4rem;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-xs);
 }
 
 
 .project-techniques {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(3rem, 1fr));
-  grid-gap: 0.4rem;
+  grid-gap: var(--space-xs);
 }
 
 .project-techniques > .technique {
   font-size: 0.9rem;
-  padding: 0.5rem 1rem;
-  color: rgb(242, 241, 241);
+  padding: var(--space-sm) var(--space-lg);
+  color: #f2f1f1;
   background-color: #0a7b0ad3;
-  border: 1px #000000 solid;
-  border-radius: 0.4rem;
+  border: var(--border-width) var(--color-border) solid;
+  border-radius: var(--radius-sm);
 }
 
 .project-link {
   font-size: 1.6rem;
   text-decoration: underline;
-  color: #222222;
+  color: var(--color-text);
 }
 
 .course-info {
   background-color: #1414142e;
-  padding: 1rem;
+  padding: var(--space-lg);
 
   display: grid;
-  grid-gap: 1rem;
+  grid-gap: var(--space-lg);
 }
 
 .course-code {
   font-size: 1.1rem;
-  font-weight: 800;
+  font-weight: var(--font-weight-bold);
 }
