@@ -1,5 +1,3 @@
-# TODO: ask about presentationslagret nr 5. Ar det alt eller liten text
-
 import os
 from flask import Flask, render_template, request, url_for
 import data_helper as data
@@ -43,7 +41,6 @@ def index():
     return render_template("index.html")
 
 
-# TODO: do we need to save search terms???
 @app.route("/list")
 def list():
     """
@@ -95,8 +92,6 @@ def techniques():
     )
 
 
-# TODO: Do we need a GET-variable for project_id?????
-# TODO: Fix so the correct error statuscode is sent to the user if the file doesnt exist (404)
 @app.route("/project/<int:project_id>")
 def project(project_id: int):
     """

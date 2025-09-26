@@ -2,7 +2,7 @@
 .vscode/
 .venv/
 __pycache__
-data_test.py
+*_test.*
 3/
 5/
 8/

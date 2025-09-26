@@ -49,7 +49,7 @@ def search(
     # Techniques
     filtered_db = [] if techniques else sorted_db
     if techniques:
-        for project in db:
+        for project in sorted_db:
             if set(techniques).issubset(project["techniques_used"]):
                 filtered_db.append(project)
 
