@@ -1,7 +1,7 @@
-# TODO: ask about presentationslagret nr 5. Ar det allt eller liten text
+# TODO: ask about presentationslagret nr 5. Ar det alt eller liten text
 
 import os
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, request, url_for
 import data_helper as data
 
 
@@ -43,14 +43,42 @@ def index():
     return render_template("index.html")
 
 
+# TODO: do we need to save search terms???
 @app.route("/list")
 def list():
     """
     Render the list page
     """
     check_db_update()
+    search = request.args.get("search")
+    search_fields = request.args.getlist("search_fields")
+    techniques = request.args.getlist("techniques")
+    sort_by = request.args.get("sort_by")
+    sort_order = request.args.get("sort_order")
+
+    if sort_by and sort_order:
+        searched_db = data.search(
+            db,
+            sort_by,
+            sort_order,
+            techniques,
+            search,
+            search_fields if search_fields else None,
+        )
+        return render_template(
+            "list.html",
+            projects=searched_db,
+            project_count=data.get_project_count(searched_db),
+            original_count=data.get_project_count(db),
+            techniques=data.get_techniques(db),
+        )
+
     return render_template(
-        "list.html", projects=db, project_count=data.get_project_count(db)
+        "list.html",
+        projects=db,
+        project_count=data.get_project_count(db),
+        original_count=data.get_project_count(db),
+        techniques=data.get_techniques(db),
     )
 
 

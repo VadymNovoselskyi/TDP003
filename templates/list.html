@@ -6,39 +6,70 @@
 
 {% block main %}
 <h1>Projects:</h1>
-<div class="filters-container">
-    <div class="search-container">
+<form class="search-container" action="/list" method="get">
+    <div class="search-input-container">
         <input
             type="text"
-            id="searchInput"
+            id="search_input"
+            name="search"
             class="search-input"
             placeholder="Search projects, courses, or technologies..."
         />
+
+        <div class="search-fields search-checkbox-container">
+            <input type="checkbox" id="start_date" name="search_fields" value="start_date">
+            <label for="start_date">Start Date</label>
+            <input type="checkbox" id="end_date" name="search_fields" value="end_date">
+            <label for="end_date">End Date</label>
+            <input type="checkbox" id="short_description" name="search_fields" value="short_description">
+            <label for="short_description">Short Description</label>
+            <input type="checkbox" id="long_description" name="search_fields" value="long_description">
+            <label for="long_description">Long Description</label>
+            <input type="checkbox" id="project_name" name="search_fields" value="project_name">
+            <label for="project_name">Project Name</label>
+            <input type="checkbox" id="course_name" name="search_fields" value="course_name">
+            <label for="course_name">Course Name</label>
+            <input type="checkbox" id="group_size" name="search_fields" value="group_size">
+            <label for="group_size">Group Size</label>
+            <input type="checkbox" id="academic_credits" name="search_fields" value="academic_credits">
+            <label for="academic_credits">Academic Credits</label>
+            <input type="checkbox" id="course_id" name="search_fields" value="course_id">
+            <label for="course_id">Course Id</label>
+            <input type="checkbox" id="project_id" name="search_fields" value="project_id">
+            <label for="project_id">Project Id</label>
+        </div>
     </div>
-    <div class="controls-container">
-        <select id="technologyFilter" class="filter-select">
-            <option value="all">All Technologies</option>
-            <option value="python">Python</option>
-            <option value="js">js</option>
-            <option value="html">html</option>
-            <option value="css">css</option>
-        </select>
-        <select id="sortBy" class="filter-select">
-            <option value="name">Project Name</option>
-            <option value="startDate">Start Date</option>
-            <option value="courseCode">Course Code</option>
-        </select>
-        <input type="checkbox" id="sortOrder" class="sort-checkbox" />
-        <label for="sortOrder" class="sort-toggle">
-            <span class="sort-icon"></span>
-            <span class="sort-text"></span>
-        </label>
+
+    <div class="techniques-filter search-checkbox-container">
+        {% for technique in techniques %}
+        <input type="checkbox" id="{{technique}}" name="techniques" value="{{technique}}">
+        <label for="{{technique}}">{{technique}}</label>
+        {% endfor %}
     </div>
-</div>
+
+    <div class="sort-container">
+        <select id="sort_by" name="sort_by" class="filter-select">
+            <option value="start_date">Start Date</option>
+            <option value="end_date">End Date</option>
+            <!-- <option value="short_description">Short Description</option>
+            <option value="long_description">Long Description</option> -->
+            <option value="project_name">Project Name</option>
+            <option value="course_name">Course Name</option>
+            <option value="group_size">Group Size</option>
+            <option value="academic_credits">Academic Credits</option>
+            <!-- <option value="course_id">Course Id</option> -->
+        </select>
+
+        <select id="sort_order" name="sort_order" class="sort-order-input">
+            <option value="asc">Ascending</option>
+            <option value="desc">Descending</option>
+        </select>
+    </div>
+    <input type="submit" value="Search" class="submit-btn">
+</form>
 
 <div class="results-container">
-    <!-- TODO: handle less projects vid sorting -->
-    <p id="resultsText" class="results-text">Showing {{ project_count }} of {{ project_count }} projects</p>
+    <p id="resultsText" class="results-text">Showing {{ project_count }} of {{ original_count }} projects</p>
 </div>
 
 <div class="project-grid">

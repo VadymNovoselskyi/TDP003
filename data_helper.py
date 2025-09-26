@@ -40,13 +40,14 @@ def search(
     search_fields: list[str] | None = None,
 ):
     # Sort
-    db.sort(
+    sorted_db = db.copy()
+    sorted_db.sort(
         key=lambda project: project.get(sort_by, "99999"),
         reverse=True if sort_order == "desc" else False,
     )
 
     # Techniques
-    filtered_db = [] if techniques else db
+    filtered_db = [] if techniques else sorted_db
     if techniques:
         for project in db:
             if set(techniques).issubset(project["techniques_used"]):
@@ -54,7 +55,7 @@ def search(
 
     # Search
     searched_db = []
-    if search == None:
+    if not search:
         return filtered_db
     elif search_fields== []:
         return [] 

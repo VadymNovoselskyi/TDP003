@@ -28,7 +28,8 @@ main {
 
 .project-techniques {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(3rem, 1fr));
+  grid-auto-flow: column;
+  justify-content: start;
   grid-gap: var(--space-xs);
 }
 
