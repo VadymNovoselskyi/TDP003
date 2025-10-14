@@ -3,6 +3,12 @@ import json
 
 
 def load(filename: str):
+    """
+    Args:
+        filename (str): The path to the file to load data from.
+    Returns:
+        any | None: The file's content if it is loaded successfully, None if the file does not exist or is not a file.
+    """
     if not os.path.isfile(filename):
         print(f"filename: {filename} either is not a file or does't exist")
         return None
@@ -12,6 +18,12 @@ def load(filename: str):
 
 
 def get_project_count(db: list[dict]) -> int:
+    """
+    Args:
+        db (list[dict]): The database to get the project count from.
+    Returns:
+        int: The number of projects in the database.
+    """
     if not isinstance(db, list):
         # raise Exception(f"db must be list and not {type(db)}")
         print(f"db must be list and not {type(db)}")
@@ -20,6 +32,13 @@ def get_project_count(db: list[dict]) -> int:
 
 
 def get_project(db: list[dict], id: int) -> dict | None:
+    """
+    Args:
+        db (list[dict]): The database to get the project from.
+        id (int): The ID of the project to get.
+    Returns:
+        dict | None: The project if it is found, None if the project is not found.
+    """
     if not isinstance(db, list):
         # raise Exception(f"db must be list and not {type(db)}")
         print(f"db must be list and not {type(db)}")
@@ -39,6 +58,17 @@ def search(
     search: str | None = None,
     search_fields: list[str] | None = None,
 ):
+    """
+    Args:
+        db (list[dict]): The database to search in.
+        sort_by (str): The field to sort by. Default is "start_date".
+        sort_order (str): The order to sort in. Default is "desc".
+        techniques (list[str] | None): The techniques to search for. Default is None.
+        search (str | None): The search query. Default is None.
+        search_fields (list[str] | None): The fields to search in. Default is None.
+    Returns:
+        list[dict]: The projects that match the search/filter and sort criteria.
+    """
     # Sort
     sorted_db = db.copy()
     sorted_db.sort(
@@ -76,6 +106,12 @@ def search(
     return searched_db
 
 def get_techniques(db: list[dict]) -> list[str]:
+    """
+    Args:
+        db (list[dict]): The database to get the techniques from.
+    Returns:
+        list[str]: All the unique techniques used in projects in the database.
+    """
     used_techniques = []
     for project in db:
         for technique in project["techniques_used"]:
@@ -87,6 +123,12 @@ def get_techniques(db: list[dict]) -> list[str]:
 
 
 def get_technique_stats(db: list) -> dict[str, list[dict]]:
+    """
+    Args:
+        db (list[dict]): The database to get the technique stats from.
+    Returns:
+        dict[str, list[dict]]: A dictionary with techniques as keys and a list of projects using that technique as values.
+    """
     techniques_info: dict[str, list[dict]] = {}
     for project in db:
         for technique in project["techniques_used"]:

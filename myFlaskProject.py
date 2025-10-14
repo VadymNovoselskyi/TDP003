@@ -5,7 +5,12 @@ import data_helper as data
 
 def update_db():
     """
-    Update the database
+    Update the database from the DATA_FILE using data.load
+    Updates last_db_change to the last modification time of the DATA_FILE \n
+    Relies on global db and last_db_change variables \n
+
+    Raises:
+        Exception: If the database is not loaded.
     """
     global db
     global last_db_change
@@ -21,7 +26,9 @@ def update_db():
 # Using pollign to check if db file was changed
 def check_db_update():
     """
-    Check if the database has been updated
+    Checks if the database has been updated
+    If it has, calls the update_db function \n
+    Relies on global last_db_change variable
     """
     current_db_change = os.path.getmtime(DATA_FILE)
     if not current_db_change == last_db_change:
@@ -36,7 +43,7 @@ update_db()
 @app.route("/")
 def index():
     """
-    Render the index page
+    Renders the index page using "index.html" template
     """
     return render_template("index.html")
 
@@ -44,7 +51,19 @@ def index():
 @app.route("/list")
 def list():
     """
-    Render the list page
+    Renders the list page using "list.html" template
+
+
+    If sort_by and sort_order are provided, calls data.search function to search the database
+    with search, search_fields, techniques, sort_by, and sort_order from GET-parameters. \n
+    In this case renders"list.html" with projects=searched_db,
+    project_count=data.get_project_count(searched_db), original_count=data.get_project_count(db),
+    techniques=data.get_techniques(db).
+
+    Otherwise, renders "list.html" with projects=db, project_count=data.get_project_count(db),
+    original_count=data.get_project_count(db), techniques=data.get_techniques(db). \n
+
+    Calls check_db_update function to check if the database has been updated 
     """
     check_db_update()
     search = request.args.get("search")
@@ -82,7 +101,10 @@ def list():
 @app.route("/techniques")
 def techniques():
     """
-    Render the techniques page
+    Renders the techniques page using "techniques.html" template
+    with techniques=data.get_techniques(db), and techniques_stats=data.get_technique_stats(db). \n
+
+    Calls check_db_update function to check if the database has been updated \n
     """
     check_db_update()
     return render_template(
@@ -95,7 +117,16 @@ def techniques():
 @app.route("/project/<int:project_id>")
 def project(project_id: int):
     """
-    Render the project page
+    Renders the project page using "project.html" template
+    with project=data.get_project(db, project_id). \n
+
+    Args:
+        project_id (int): The ID of the project to display.
+
+    If the project is not found, renders "error.html"
+    with code=404 and message=f"Project not found for id: {project_id}".
+
+    Calls check_db_update function to check if the database has been updated \n
     """
     check_db_update()
     project = data.get_project(db, project_id)
@@ -108,6 +139,6 @@ def project(project_id: int):
 
 if __name__ == "__main__":
     """
-    Run the application
+    Runs the application on port 4001 in debug mode
     """
     app.run(debug=True, port=4001)
