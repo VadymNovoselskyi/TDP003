@@ -2,7 +2,6 @@
 .vscode/
 .venv/
 __pycache__
-*_test.*
 3/
 5/
 8/
