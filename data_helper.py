@@ -92,13 +92,13 @@ def search(
     elif search_fields == None:
         for project in filtered_db:
             for value in project.values():
-                if search == value:
+                if search.upper() in str(value).upper():
                     searched_db.append(project)
                     break
     else:
         for project in filtered_db:
             for field in search_fields:
-                if str(project.get(field, "")).upper() == search.upper():
+                if  search.upper() in str(project.get(field, "")).upper():
                     searched_db.append(project)
                     break
                 
