@@ -23,7 +23,7 @@ def update_db():
     last_db_change = os.path.getmtime(DATA_FILE)
 
 
-# Using pollign to check if db file was changed
+
 def check_db_update():
     """
     Checks if the database has been updated

@@ -7,7 +7,7 @@ def load(filename: str):
     Args:
         filename (str): The path to the file to load data from.
     Returns:
-        any | None: The file's content if it is loaded successfully, None if the file does not exist or is not a file.
+        a\\ny | None: The file's content if it is loaded successfully, None if the file does not exist or is not a file.
     """
     if not os.path.isfile(filename):
         print(f"filename: {filename} either is not a file or does't exist")
@@ -72,7 +72,7 @@ def search(
     # Sort
     sorted_db = db.copy()
     sorted_db.sort(
-        key=lambda project: project.get(sort_by, "99999"),
+        key=lambda project: project.get(sort_by, ""),
         reverse=True if sort_order == "desc" else False,
     )
 
@@ -80,7 +80,8 @@ def search(
     filtered_db = [] if techniques else sorted_db
     if techniques:
         for project in sorted_db:
-            if set(techniques).issubset(project["techniques_used"]):
+            # Checks if techniques exists inside techniques_used
+            if set(techniques).issubset(project["techniques_used"]): 
                 filtered_db.append(project)
 
     # Search
