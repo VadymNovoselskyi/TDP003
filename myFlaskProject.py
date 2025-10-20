@@ -35,7 +35,7 @@ def check_db_update():
         update_db()
 
 
-app = Flask(__name__)  # type: ignore
+app = Flask(__name__)
 DATA_FILE = "data.json"
 update_db()
 
@@ -115,7 +115,7 @@ def techniques():
 
 
 @app.route("/project/<int:project_id>")
-def project(project_id: int):
+def project(project_id):
     """
     Renders the project page using "project.html" template
     with project=data.get_project(db, project_id). \n

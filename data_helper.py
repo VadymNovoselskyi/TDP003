@@ -2,7 +2,7 @@ import os
 import json
 
 
-def load(filename: str):
+def load(filename):
     """
     Args:
         filename (str): The path to the file to load data from.
@@ -17,7 +17,7 @@ def load(filename: str):
     return data
 
 
-def get_project_count(db: list[dict]) -> int:
+def get_project_count(db):
     """
     Args:
         db (list[dict]): The database to get the project count from.
@@ -31,7 +31,7 @@ def get_project_count(db: list[dict]) -> int:
     return len(db)
 
 
-def get_project(db: list[dict], id: int) -> dict | None:
+def get_project(db, id):
     """
     Args:
         db (list[dict]): The database to get the project from.
@@ -51,12 +51,12 @@ def get_project(db: list[dict], id: int) -> dict | None:
 
 
 def search(
-    db: list[dict],
-    sort_by: str = "start_date",
-    sort_order: str = "desc",
-    techniques: list[str] | None = None,
-    search: str | None = None,
-    search_fields: list[str] | None = None,
+    db,
+    sort_by="start_date",
+    sort_order="desc",
+    techniques=None,
+    search=None,
+    search_fields=None,
 ):
     """
     Args:
@@ -105,7 +105,7 @@ def search(
 
     return searched_db
 
-def get_techniques(db: list[dict]) -> list[str]:
+def get_techniques(db):
     """
     Args:
         db (list[dict]): The database to get the techniques from.
@@ -122,14 +122,14 @@ def get_techniques(db: list[dict]) -> list[str]:
     return used_techniques
 
 
-def get_technique_stats(db: list) -> dict[str, list[dict]]:
+def get_technique_stats(db):
     """
     Args:
         db (list[dict]): The database to get the technique stats from.
     Returns:
         dict[str, list[dict]]: A dictionary with techniques as keys and a list of projects using that technique as values.
     """
-    techniques_info: dict[str, list[dict]] = {}
+    techniques_info = {}
     for project in db:
         for technique in project["techniques_used"]:
             if not technique in techniques_info:

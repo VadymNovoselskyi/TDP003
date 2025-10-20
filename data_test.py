@@ -154,7 +154,7 @@ class DataTest(unittest.TestCase):
         # Load the data using your implemented load function. The data is
         # stored as a member of the class instance, so that it can be accessed
         # in other methods of the class
-        self.loaded_data = sorted(data.load("data_test.json"), key=itemgetter("project_id"))  # type: ignore
+        self.loaded_data = sorted(data.load("data_test.json"), key=itemgetter("project_id"))
 
     def test_load(self):
         """Test the implemented load function"""
@@ -176,31 +176,31 @@ class DataTest(unittest.TestCase):
 
         # Try to get project 1, 2, 3 and 4 and check that a project with
         # the correct project_id is returned.
-        self.assertEqual(data.get_project(self.loaded_data, 1)["project_id"], 1)  # type: ignore
-        self.assertEqual(data.get_project(self.loaded_data, 2)["project_id"], 2)  # type: ignore
-        self.assertEqual(data.get_project(self.loaded_data, 3)["project_id"], 3)  # type: ignore
-        self.assertEqual(data.get_project(self.loaded_data, 4)["project_id"], 4)  # type: ignore
+        self.assertEqual(data.get_project(self.loaded_data, 1)["project_id"], 1)
+        self.assertEqual(data.get_project(self.loaded_data, 2)["project_id"], 2)
+        self.assertEqual(data.get_project(self.loaded_data, 3)["project_id"], 3)
+        self.assertEqual(data.get_project(self.loaded_data, 4)["project_id"], 4)
 
         # Try to get a non-existing project and check that None is returned
-        self.assertEqual(data.get_project(self.loaded_data, 42), None)  # type: ignore
+        self.assertEqual(data.get_project(self.loaded_data, 42), None)
 
     def test_search(self):
         """Test the implemented search function"""
 
         # Call search with no other parameters than the database.
         # All projects should be returned
-        self.assertEqual(len(data.search(self.loaded_data)), 4)  # type: ignore
+        self.assertEqual(len(data.search(self.loaded_data)), 4)
 
         # Search for projects with csv as technique.
         # 1 project should be returned
-        self.assertEqual(len(data.search(self.loaded_data, techniques=["csv"])), 1)  # type: ignore
+        self.assertEqual(len(data.search(self.loaded_data, techniques=["csv"])), 1)
 
         # Search for projects including Python and sort them in ascending order.
         # Ensure that returned projects are sorted by ascending dates
         res = data.search(self.loaded_data, sort_order="asc", techniques=["python"])
-        self.assertEqual(res[0]["start_date"], "2009-09-05")  # type: ignore
-        self.assertEqual(res[1]["start_date"], "2009-09-07")  # type: ignore
-        self.assertEqual(res[2]["start_date"], "2009-09-08")  # type: ignore
+        self.assertEqual(res[0]["start_date"], "2009-09-05")
+        self.assertEqual(res[1]["start_date"], "2009-09-07")
+        self.assertEqual(res[2]["start_date"], "2009-09-08")
 
         # Search for the term 'okÃ¤nt' in three specified search fields. Sort
         # results by end_date.
@@ -211,10 +211,10 @@ class DataTest(unittest.TestCase):
             search="okänt",
             search_fields=["project_id", "project_name", "course_name"],
         )
-        self.assertEqual(len(res), 3)  # type: ignore
-        self.assertEqual(res[0]["project_id"], 2)  # type: ignore
-        self.assertEqual(res[1]["project_id"], 3)  # type: ignore
-        self.assertEqual(res[2]["project_id"], 1)  # type: ignore
+        self.assertEqual(len(res), 3)
+        self.assertEqual(res[0]["project_id"], 2)
+        self.assertEqual(res[1]["project_id"], 3)
+        self.assertEqual(res[2]["project_id"], 1)
 
         # Search for 'okÃ¤nt' in specified search fields.
         # Ensure correct number of results
@@ -223,7 +223,7 @@ class DataTest(unittest.TestCase):
             search="okänt",
             search_fields=["project_id", "project_name", "course_name"],
         )
-        self.assertEqual(len(res), 3)  # type: ignore
+        self.assertEqual(len(res), 3)
 
         # Search for 'okÃ¤nt' in specified search fields, provide empty technique list
         # Ensure correct number of results
@@ -233,20 +233,20 @@ class DataTest(unittest.TestCase):
             search="okänt",
             search_fields=["project_id", "project_name", "course_name"],
         )
-        self.assertEqual(len(res), 3)  # type: ignore
+        self.assertEqual(len(res), 3)
 
         # Search for 'okÃ¤nt', provide empty search fields list
         # Ensure 0 results
         res = data.search(self.loaded_data, search="okänt", search_fields=[])
-        self.assertEqual(len(res), 0)  # type: ignore
+        self.assertEqual(len(res), 0)
 
         # Search with results sorted by group size.
         # Ensure results are in descending order
         res = data.search(self.loaded_data, sort_by="group_size")
-        self.assertEqual(res[0]["project_id"], 4)  # 1 # type: ignore
-        self.assertEqual(res[1]["project_id"], 2)  # 2 # type: ignore
-        self.assertEqual(res[2]["project_id"], 3)  # 3 # type: ignore
-        self.assertEqual(res[3]["project_id"], 1)  # 4 # type: ignore
+        self.assertEqual(res[0]["project_id"], 4)  # 1
+        self.assertEqual(res[1]["project_id"], 2)  # 2
+        self.assertEqual(res[2]["project_id"], 3)  # 3
+        self.assertEqual(res[3]["project_id"], 1)  # 4
 
     def test_get_techniques(self):
         """Test the implemented get_techniques function"""
